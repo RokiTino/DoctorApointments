@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:hospital/screens/Home.dart';
+import 'package:hospital/screens/Login.dart';
 import 'package:hospital/widgets/text_widget.dart';
 class Splash extends StatefulWidget
 {
@@ -104,7 +105,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
                     setState(() {
                     });
                     Timer(const Duration(milliseconds: 400),() {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Home(),));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Login(),));
                     },);
                   },
                   child: AnimatedOpacity(
