@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import 'category.dart';
 
@@ -6,6 +6,8 @@ class categoryRow extends StatelessWidget {
 
   var opacity = 0.0;
   bool position=false;
+
+  categoryRow({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,6 @@ class categoryRow extends StatelessWidget {
               ],
             ),
           ),
-        ));;
+        ));
   }
 }
