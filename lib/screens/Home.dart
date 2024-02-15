@@ -4,11 +4,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hospital/screens/SeeAll.dart';
 import 'package:hospital/res/lists.dart';
-import 'package:hospital/widgets/presentation/doctorList.dart';
 import 'package:hospital/widgets/text_widget.dart' ;
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-
-import '../widgets/presentation/categoryRow.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -302,19 +299,163 @@ class _HomeState extends State<Home> {
                     duration: const Duration(milliseconds: 400),
                     opacity: opacity,
                     child: CurvedNavigationBar(
-                        backgroundColor: Colors.white,
+                        backgroundColor: Colors.blue,
                         items: const [
                           Icon(Icons.home_filled,color: Colors.blue,size: 30,),
                           Icon(Icons.calendar_month_rounded,color: Colors.black,size: 30,),
                           Icon(Icons.whatshot_outlined,color: Colors.black,size: 30,),
                           Icon(Icons.account_circle_outlined,color: Colors.black,size: 30,),
-                        ]),
-                  ))
-
+                        ],
+                    ),
+                  )
+              ),
             ],
           ),
         ),
       ),
     );
   }
+
+  Widget categoryRow(){
+    return AnimatedPositioned(
+        top: position? 320 : 420,
+        left: 25,
+        right: 25,
+        duration: const Duration(milliseconds: 400),
+        child: AnimatedOpacity(
+          duration: const Duration(milliseconds: 400),
+          opacity: opacity,
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                category("assets/images/capsule.png", "Drug",5),
+                category("assets/images/virus.png", "Virus",10),
+                category("assets/images/heart.png", "Physo",10),
+                TapRegion(child: category("assets/images/app.png", "Other",12))
+              ],
+            ),
+          ),
+        ));
+  }
+
+  Widget doctorList(){
+    return AnimatedPositioned(
+        top: position?460:550,
+        left: 20,
+        right: 20,
+        duration: const Duration(milliseconds: 400),
+        child: AnimatedOpacity(
+          duration: const Duration(milliseconds: 400),
+          opacity: opacity,
+          child: AnimatedOpacity(
+            opacity: opacity,
+            duration: const Duration(milliseconds: 300),
+            child: SizedBox(
+              height: 270,
+              width: MediaQuery.of(context).size.width,
+              child: SingleChildScrollView(
+                child:
+                Column(
+                  children: [
+                    doctorCard(names[0], spacilality[0], images[0]),
+                    doctorCard(names[1], spacilality[1], images[1]),
+                    doctorCard(names[2], spacilality[2], images[2]),
+                  ],
+                ),
+
+              ),
+            ),
+          ),
+        )
+    );
+  }
+  Widget doctorCard(String name,String specialist,AssetImage image){
+    return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: SizedBox(
+        height: 120,
+        width: double.infinity,
+        child: Row(
+          children: [
+            const SizedBox(width: 10,),
+            CircleAvatar(
+              radius: 30,
+              backgroundImage: image,
+              backgroundColor: Colors.blue,
+            ),
+            const SizedBox(width: 10,),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextWidget(name, 20, Colors.black,FontWeight.bold,letterSpace: 0,),
+                const SizedBox(height: 5,),
+                TextWidget(specialist, 17, Colors.black,FontWeight.bold,letterSpace: 0,),
+                const SizedBox(height: 5,),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.star,color: Colors.orangeAccent,),
+                    Icon(Icons.star,color: Colors.orangeAccent,),
+                    Icon(Icons.star,color: Colors.orangeAccent,),
+                    Icon(Icons.star,color: Colors.orangeAccent,),
+                    Icon(Icons.star,color: Colors.orangeAccent,),
+                  ],
+                ),
+              ],
+            ),
+            const Spacer(),
+            const Icon(Icons.navigation_sharp,color: Colors.blue,),
+            const SizedBox(width: 20,),
+          ],
+        ),
+      ),
+    );
+  }
+
+
+  Widget category(String asset,String txt,double padding){
+    return Column(
+      children: [
+        InkWell(
+          child: Card(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10)
+            ),
+            child: Container(
+              padding:  EdgeInsets.all(padding),
+              height: 50,
+              width: 50,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Center(
+                child: Image(
+                  image:
+                  AssetImage(asset),
+                ),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        TextWidget(
+          txt,
+          16,
+          Colors.black,
+          FontWeight.bold,
+          letterSpace: 1,
+        ),
+      ],
+    );
+  }
+
 }
+
