@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:hospital/screens/Home.dart';
-import 'package:hospital/screens/Login.dart';
+import 'package:hospital/screens/login_screen.dart';
 import 'package:hospital/widgets/text_widget.dart';
+
 class Splash extends StatefulWidget
 {
   const Splash({super.key});
@@ -115,7 +116,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
                       width: 150,
                       height: 60,
                       decoration: BoxDecoration(
-                          color: Colors.blue.shade900,
+                          color: Colors.blue,
                           borderRadius: BorderRadius.circular(10)
                       ),
                       child: Center(

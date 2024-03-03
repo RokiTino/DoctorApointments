@@ -5,7 +5,6 @@ import 'package:hospital/widgets/text_widget.dart';
 
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
-import 'Profile.dart';
 
 class Oppointment extends StatefulWidget {
   int index=0;

@@ -1,7 +1,9 @@
 import 'dart:async';
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:hospital/screens/Chat.dart';
+import 'package:hospital/screens/Oppointment.dart';
+import 'package:hospital/screens/Profile.dart';
 import 'package:hospital/screens/SeeAll.dart';
 import 'package:hospital/res/lists.dart';
 import 'package:hospital/widgets/text_widget.dart' ;
@@ -279,7 +281,7 @@ class _HomeState extends State<Home> {
                             //   animator();
                             // },);
                             await Future.delayed(const Duration(milliseconds: 500));
-                            await Navigator.push(context, MaterialPageRoute(builder:  (context) {
+                            await Navigator.push(context, MaterialPageRoute(builder: (context) {
                               return SeeAll();
                             },));
 
@@ -300,11 +302,44 @@ class _HomeState extends State<Home> {
                     opacity: opacity,
                     child: CurvedNavigationBar(
                         backgroundColor: Colors.blue,
-                        items: const [
-                          Icon(Icons.home_filled,color: Colors.blue,size: 30,),
-                          Icon(Icons.calendar_month_rounded,color: Colors.black,size: 30,),
-                          Icon(Icons.whatshot_outlined,color: Colors.black,size: 30,),
-                          Icon(Icons.account_circle_outlined,color: Colors.black,size: 30,),
+                        items: [
+                          IconButton(
+                            icon: Icon(Icons.home_filled, color: Colors.blue, size: 30),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Home()),
+                              );
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.calendar_month_rounded,color: Colors.black,size: 30,),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Oppointment(0)),
+                              );
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.whatshot_outlined,color: Colors.black,size: 30,),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Chat(image: AssetImage("doctor1.png"),specialist: "Surgent", name: "Bob",)),
+                              );
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.account_circle_outlined,color: Colors.black,size: 30,),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Profile(image: AssetImage("doctor1.png"),speciality: "Surgent", name: "Bob",)),
+                              );
+                            },
+                          ),
+
                         ],
                     ),
                   )

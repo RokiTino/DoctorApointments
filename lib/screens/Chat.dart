@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hospital/screens/SeeAll.dart';
 import 'package:hospital/widgets/text_widget.dart';
 import 'Profile.dart';
+
 class Chat extends StatefulWidget {
   final AssetImage image;
   final String name;
@@ -173,7 +174,7 @@ class _ChatState extends State<Chat> {
                         Positioned(
                             top: 70,
                             child: Container(
-                              height: size.height / 1.35,
+                              height: size.height / 0.2,
                               width: size.width,
                               padding: const EdgeInsets.symmetric(horizontal: 20),
                               color: Colors.white,

@@ -60,9 +60,11 @@ class _ProfileState extends State<Profile> {
                     width: size.width,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: widget.image, fit: BoxFit.cover)),
+                            image: widget.image, fit: BoxFit.cover)
+                    ),
                   ),
-                )),
+                )
+            ),
             AnimatedPositioned(
                 left: animate ? 1 : -100,
                 duration: const Duration(milliseconds: 400),
